@@ -49,3 +49,26 @@ def maze_path(x1, y1, x2, y2):
 
 if __name__ == "__main__":
     maze_path(1, 1, 8, 8)
+# def maze_path2(x1, y1, x2, y2):
+#     stack = []
+#     stack.append((x1, y1))  # 起始节点(坐标)
+#     while len(stack) > 0:
+#         curNode = stack[-1]  # 当前节点(坐标)
+#         if curNode[0] == x2 and curNode[1] == y2:
+#             # 走到终点,输出路劲
+#             for p in stack:
+#                 print(p)
+#             return True
+#         # 假设当前坐标是x,y
+#         for dir in dirs:
+#             nextNode = dir(curNode[0], curNode[1])
+#             if maze[nextNode[0]][nextNode[1]] == 0:
+#                 stack.append(nextNode)
+#                 maze[nextNode[0]][nextNode[1]] = 2
+#                 break
+#         else:
+#             maze[nextNode[0]][nextNode[1]] = 2
+#             stack.pop()
+#     else:
+#         print("没有路")
+#         return False
