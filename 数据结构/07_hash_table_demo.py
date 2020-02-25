@@ -54,8 +54,58 @@ class LinkList(object):
         return "<<"+",".join(map(str, self))+">>"
 
 
+class HashTable(object):
+    """类似集合 的 哈希表"""
+
+    def __init__(self, size=101):
+        self.size = size
+        self.T = [LinkList() for i in range(self.size)]
+
+    def h(self, k):
+        return k % self.size
+
+    def find(self, k):
+        i = self.h(k)
+        return self.T[i].find(k)
+
+    def insert(self, k):
+        i = self.h(k)  # 位置
+        if self.find(k):
+            print("Duplicated Insert")  # 重复的插入
+        else:
+            self.T[i].append(k)
+
+
+
+
+
 if __name__ == "__main__":
-    lk = LinkList([1, 2, 3, 4, 5])
-    for element in lk:
-        print(element)
-    print(lk)  # 重写repr
+    ht = HashTable()
+    # ht.insert(0)
+    # ht.insert(1)
+    # ht.insert(0)
+    ht.insert(0)
+    ht.insert(1)
+    ht.insert(3)
+    ht.insert(102)
+    print(",".join(map(str, ht.T)))
+# class HashTable2(object):
+#     """类似集合的哈希表"""
+
+#     def __init__(self, size=101):
+#         self.size = size
+#         self.T = [LinkList() for _ in range(self.size)]
+
+#     def h(self, k):
+#         return k % self.size
+
+#     def find(self, k):
+#         i = self.h(k)
+#         return self.T[i].find(k)
+
+#     def insert(self, k):
+#         i = self.h(k)  # 位置
+#         if self.find(k):
+#             print("Duplicated Insert")
+#         else:
+#             self.T[i].append(k)
